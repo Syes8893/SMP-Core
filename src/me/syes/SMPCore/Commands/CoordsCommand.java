@@ -1,4 +1,4 @@
-package me.syes.RJL;
+package me.syes.SMPCore.Commands;
 
 import java.util.HashMap;
 
@@ -10,12 +10,16 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Team;
 
-public class CoordsCommand implements CommandExecutor{
+import me.syes.SMPCore.Main;
 
-	public static HashMap<Team, HashMap<Location, String>> savedCoords;
+public class CoordsCommand implements CommandExecutor {
+
+	private Main main;
 	
-	public CoordsCommand() {
-		savedCoords = new HashMap<Team, HashMap<Location, String>>();
+	private HashMap<Team, HashMap<Location, String>> savedCoords;
+	
+	public CoordsCommand(Main main) {
+		this.main = main;
 	}
 	
 	
@@ -38,10 +42,11 @@ public class CoordsCommand implements CommandExecutor{
 						Player pla = pl.getPlayer();
 						pla.sendMessage("§a§lTEAM §7» §f" + name + ": §7X:§f" + p.getLocation().getBlockX()
 								+ " §7Y:§f" + p.getLocation().getBlockY() + " §7Z:§f" + p.getLocation().getBlockZ()
-								+ " in the " + getWorldName(p.getWorld().getName()) + " §7(by " + p.getName() + ")");
+								+ " in the " + main.getWorldUtils().getWorldName(p.getWorld().getName()) + " §7(by " + p.getName() + ")");
 					}
 				}
 				if(!name.equals("Undefined")) {
+					this.savedCoords = main.getCoordsUtils().savedCoords;
 					if(savedCoords.get(p.getScoreboard().getPlayerTeam(p)) == null) {
 						HashMap<Location, String> locs = new HashMap<Location, String>();
 						locs.put(p.getLocation(), name);
@@ -53,20 +58,10 @@ public class CoordsCommand implements CommandExecutor{
 			}else {
 				p.sendMessage("§b§lSOLO §7» §f" + name + ": §7X:§f" + p.getLocation().getBlockX()
 						+ " §7Y:§f" + p.getLocation().getBlockY() + " §7Z:§f" + p.getLocation().getBlockZ()
-						+ " in the " + getWorldName(p.getWorld().getName()) + " §7(by " + p.getName() + ")");
+						+ " in the " + main.getWorldUtils().getWorldName(p.getWorld().getName()) + " §7(by " + p.getName() + ")");
 			}
 		}
 		return true;
-	}
-	
-	public static String getWorldName(String worldName) {
-		if(worldName.equals("world"))
-			return "§aOverworld§f";
-		else if(worldName.equals("world_nether"))
-			return "§cNether§f";
-		else if(worldName.equals("world_the_end"))
-			return "§eEnd§f";
-		return "§4ERROR";
 	}
 
 }

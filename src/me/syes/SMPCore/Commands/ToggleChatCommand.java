@@ -1,4 +1,4 @@
-package me.syes.RJL;
+package me.syes.SMPCore.Commands;
 
 import java.util.HashMap;
 import java.util.UUID;
