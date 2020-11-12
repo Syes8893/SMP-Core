@@ -1,0 +1,17 @@
+name: SMP
+author: Syes
+version: 1.1
+description: Simple SMP Utilities
+main: me.syes.RJL.Main
+api-version: 1.16
+commands:
+  coords:
+    description: shares your (named) coords with your teammates and saved them
+    usage: /sc <name>
+    aliases: [cc, coordinates, sc]
+  gc:
+    description: lists all previously sent coordinates
+    aliases: [getcoords, savedcoords, lc, listcoords]
+  tc:
+    description: toggle teamchat
+    aliases: [teamchat, togglechat, teamc]
