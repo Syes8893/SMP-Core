@@ -48,6 +48,7 @@ public class SavedCoordsCommand implements CommandExecutor {
 								+ " in the " + main.getWorldUtils().getWorldName(loc.getWorld().getName()));
 				}
 			}
+			p.sendMessage("");
 		}
 		return false;
 	}

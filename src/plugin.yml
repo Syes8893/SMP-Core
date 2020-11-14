@@ -2,8 +2,9 @@ name: SMP
 author: Syes
 version: 1.1
 description: Simple SMP Utilities
-main: me.syes.RJL.Main
+main: me.syes.SMPCore.Main
 api-version: 1.16
+softdepend: [HologramApi]
 commands:
   coords:
     description: shares your (named) coords with your teammates and saved them
@@ -15,3 +16,9 @@ commands:
   tc:
     description: toggle teamchat
     aliases: [teamchat, togglechat, teamc]
+  bl:
+    description: get illegal placed blocks logs
+    aliases: [blocklogs]
+  team:
+    description: all team commands
+    aliases: [t]

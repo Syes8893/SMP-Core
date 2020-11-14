@@ -21,8 +21,11 @@ public class EntityHandler implements Listener {
 	@EventHandler
 	public void onMobDeath(EntityDeathEvent e) {
 		if(e.getEntityType() == EntityType.SHEEP)
-			if(new Random().nextInt(4) == 1)
-				e.getDrops().add(new ItemStack(Material.PHANTOM_MEMBRANE, new Random().nextInt(2) + 1));
+			if(new Random().nextInt(20) <= 2)
+				e.getDrops().add(new ItemStack(Material.PHANTOM_MEMBRANE, 1));
+		
+		if(e.getEntityType() == EntityType.ENDER_DRAGON)
+			e.getDrops().add(new ItemStack(Material.ELYTRA, 1));
 	}
 	
 }
